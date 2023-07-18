@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+{% include 'navbar.html' %}s
+
+<style>
+    .close-icon {
+        cursor: pointer;
+      }
+     
+</style>
+
+
+<div class="container my-4 ">
+
+    <h1>Add Post
+    </h1>
+    
+    <div class="card my-3">
+        <div class="card-header">``
+            <h5>Add Post</h5>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            {% for message in messages %}
+            <p class="text-success">{{message}}</p>
+            {% endfor %}
+            {% endif %}
+
+            <form action="{% url 'add' %}" method="POST">
+                {% csrf_token %}
+                <table class="table ">
+                    <tr>
+                        <th>Title</th>
+                        <td><input type="text" class="form-control" name = 'title'></td>
+                    </tr>
+                    <tr>
+                        <th>Details</th>
+                        <td>
+                            <textarea name="description" id="" cols="30" rows="5" class="form-control"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-success">Add</button>
+                        </td>
+                        <td >
+                            <a  class="btn btn-danger" href="{% url 'home' %}">Cancel</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<div class="container my-4 ">
+
+    <h1>Update Post</h1>
+    <div class="card my-3">
+        <h5 class="card-header">Update Post</h5>
+        <div class="card-body">
+            {% if messages %}
+            {% for message in messages %}
+            <p class="text-success">{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table class="table ">
+                    <tr>
+                        <th>Title</th>
+                        <td><input type="text" class="form-control" name = 'title' value="{{post.title}}"></td>
+                    </tr>
+                    <tr>
+                        <th>Details</th>
+                        <td>
+                            <textarea name="description" id="" cols="30" rows="5" class="form-control"  placeholder="{{post.description}}"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock content %}
